@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trải nghiệm Tàu Lửa AR</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    header {
+      padding: 14px 20px;
+      background: rgba(15, 23, 42, 0.9);
+      text-align: center;
+      border-bottom: 1px solid #1e293b;
+      z-index: 10;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    header p { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+
+    model-viewer {
+      width: 100%;
+      flex: 1;
+      background-color: #1e293b;
+      --poster-color: transparent;
+    }
+
+    .ar-button {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
+    }
+    .ar-button:active { transform: translateX(-50%) scale(0.96); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mô hình Tàu Lửa 3D & AR</h1>
+    <p>Xoay để xem trước hoặc bấm nút bên dưới để đặt ra không gian thực</p>
+  </header>
+
+  <model-viewer
+    id="train-viewer"
+    src="tau-lua.glb"
+    alt="Mô hình tàu lửa 3D đang chạy"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    ar-scale="auto"
+    camera-controls
+    autoplay
+    shadow-intensity="1"
+    exposure="1.4"
+    environment-image="neutral">
+
+    <button slot="ar-button" class="ar-button">
+      🚂 Xem tàu chạy trong không gian thực
+    </button>
+
+  </model-viewer>
+
+</body>
+</html>
